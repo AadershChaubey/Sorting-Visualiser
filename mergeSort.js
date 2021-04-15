@@ -1,4 +1,5 @@
 function mergeSort(arr){
+    console.log("mergeSort");
     return mergeSortMain(arr, 0, arr.length);
 }
 
