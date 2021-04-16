@@ -1,9 +1,10 @@
 const container = document.querySelector(".container");
-const widthOfSingleBar = 10;
+const widthOfSingleBar = 30;
 let numberOfBars = (container.offsetWidth / widthOfSingleBar).toFixed(0);
 let DiffBetweenHeight = (container.offsetHeight / numberOfBars).toFixed(1);
 let maxHeight = container.offsetHeight.toFixed(0);
 var Array = [];   // it contains refernce to all the bars and their height
+var SortedArrayHeight = [];
 
 // shuffleArray();
 createBars();
@@ -30,12 +31,14 @@ function createBars(){
         let bar = document.createElement("div");
         bar.classList.add("bar");
         // container.append(bar);
-        bar.style.height = (widthOfSingleBar + (i - 1) * DiffBetweenHeight) + "px";
-        bar.style.minWidth = widthOfSingleBar + "px";
+        let height = (widthOfSingleBar + (i - 1) * DiffBetweenHeight);
+        bar.style.height = height + "px";
+        bar.style.width = widthOfSingleBar + "px";
         let barObject = {};
         barObject.height = i;
         barObject.bar = bar;
         Array.push(barObject);
+        SortedArrayHeight.push(height);
     }
 }
 
@@ -63,5 +66,11 @@ function clone(arr){
 
         ans.push(newObject);
     }
+    return ans;
+}
+
+function cloneRefrences(arr){
+    const ans = [];
+    for(let i = 0; i < arr.length; i++)ans.push(arr[i]);
     return ans;
 }
